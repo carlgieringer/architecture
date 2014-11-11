@@ -1,4 +1,3 @@
-MYPY=$(VENV)/bin/mypy
 NOTEBOOK=notebooks/mmpl-arch.ipynb
 
 include include/common.mk

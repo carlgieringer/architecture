@@ -1,3 +1,5 @@
+MYPY=$(VENV)/bin/mypy
+
 $(MYPY):
 	git clone https://github.com/JukkaL/mypy.git
 	. $(VENV)/bin/activate && \
