@@ -1,12 +1,7 @@
-VENV=../.venv-mmpl
-PYTHON=python3.4
-IPYTHON=ipython3
-SYSTEM_PYTHON=$(shell which $(PYTHON))
-SOURCE=./lib
 MYPY=$(VENV)/bin/mypy
+NOTEBOOK=notebooks/mmpl-arch.ipynb
 
-virtual-env:
-	$(SYSTEM_PYTHON) -m venv $(VENV)
+include include/common.mk
 
 pygraphviz:
 	@git clone https://github.com/pygraphviz/pygraphviz
@@ -23,26 +18,7 @@ $(MYPY):
 	cd mypy && $(PYTHON) setup.py install
 	rm -rf mypy
 
-deps: pygraphviz
-	. $(VENV)/bin/activate && \
-	pip3.4 install -r requirements.txt
-
-setup: virtual-env deps
-	. $(VENV)/bin/activate
-
-run:
-	. $(VENV)/bin/activate && \
-	$(IPYTHON) notebook notebooks/mmpl-arch.ipynb
-
-clean:
-	rm -rf $(VENV)
-
-repl:
-	. $(VENV)/bin/activate && $(IPYTHON)
-
-flakes:
-	@echo "\nChecking for flakes ...\n"
-	flake8 $(SOURCE)
+deps: pygraphviz project-deps
 
 types: $(MYPY)
 	@echo "\nChecking types ...\n"
