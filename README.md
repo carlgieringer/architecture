@@ -1,4 +1,4 @@
-# architecture
+# matplotlib Architecture
 
 This notebook is one in a series. All of them are listed in order here:
  * https://github.com/masteringmatplotlib/notebooks
